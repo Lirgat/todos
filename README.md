@@ -8,6 +8,6 @@ npm run go
 
 ## Стек
 
-### React, Typescript, CSS
+React, Typescript, CSS
 
 

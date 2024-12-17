@@ -1,0 +1,37 @@
+.InputBlock {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.Input {
+    border: 3px solid rgb(206, 206, 206);
+    border-radius: 10px;
+}
+
+.Input:focus {
+    outline: none;
+}
+
+.Button {
+    border: none;
+    font-family: "Roboto", sans-serif;
+    background-color: rgb(94, 94, 94);
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.Button:hover {
+    transform: scale(1.1);
+}
+
+.Button:active {
+    transform: scale(0.9);
+    transition: 0.1s;
+}

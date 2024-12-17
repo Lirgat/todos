@@ -11,8 +11,8 @@ const Task:FC<TaskProps> = ({name, done = false}):JSX.Element => {
 
     return(
         <div className={style.TaskBlock} onClick={handleClick}>
-            <button className={`${style.Button} ${isActive ? style.ButtonActive : undefined}`}/>
-            <div className={`${style.Task} ${isActive ? style.ActiveTask : undefined}`}>{name}</div>
+            <button className={`${style.Button} ${isActive ? style.ButtonActive : ''}`}/>
+            <div className={`${style.Task} ${isActive ? style.ActiveTask : ''}`}>{name}</div>
         </div>
     )
 }
