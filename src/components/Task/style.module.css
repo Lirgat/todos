@@ -1,0 +1,54 @@
+.TaskBlock {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.Button {
+    border-radius: 30px;
+    padding: 12px;
+    border: 2px solid black;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.ButtonActive {
+    position: relative;
+    border: 2px solid rgb(11, 222, 78);
+}
+
+.ButtonActive::before,
+.ButtonActive::after {
+    content: ''; 
+    position: absolute;
+    border: solid rgb(11, 222, 78); 
+    border-width: 0 2px 2px 0; 
+}
+
+.ButtonActive::before {
+    left: 8px; 
+    top: 61%; 
+    transform: translateY(-50%) rotate(-45deg);
+    height: 5px; 
+}
+
+.ButtonActive::after {
+    left: 14px; 
+    top: 54%; 
+    transform: translateY(-50%) rotate(35deg); 
+    height: 11px; 
+}
+
+.Task {
+    font-weight: medium;
+    font-family: "Roboto";
+    font-size: 24px;
+    transition: 0.2s; 
+}
+
+.ActiveTask {
+    text-decoration: line-through;
+    opacity: 0.3;
+}
