@@ -1,10 +1,13 @@
 # Тестовое задание todos
 
+Выполняю тестовое задание для Mindbox
+
 ## Запуск проекта
+
+### npm run go
 
 ## Стек
 
-In the project directory, you can run:
+### React, Typescript, CSS
 
-### `npm start`
 
