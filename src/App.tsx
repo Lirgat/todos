@@ -1,26 +1,35 @@
-import React, { FunctionComponent, JSX, useEffect, useState } from 'react';
+import React, { FunctionComponent, JSX, useState } from 'react';
 import style from "./style.module.css"
-import { TaskList, TaskProps } from './types.ts';
+import { InputProps, TaskList } from './types.ts';
 import Tittle from './components/Tittle/Tittle.tsx';
 import TaskInput from './components/TaskInput/TaskInput.tsx';
-import BtnMenu from './components/BtnMenu/BtnMenu.tsx';
+import TaskTable from './components/Tasktable/TaskTable.tsx';
 
 const App:FunctionComponent = ():JSX.Element => {
-  const [tasks, setTasks] = useState<TaskList>([]); // Инициализация состояния для задач
+  const [tasks, setTasks] = useState<TaskList>([]);
 
-    const pushTask = (newTask:TaskProps) => {
-        setTasks((prevTasks) => [...prevTasks, newTask]); // Обновление состояния, добавляя новую задачу
+    const pushTask = (newTask:InputProps) => {
+        setTasks((prevTasks) => [...prevTasks, newTask]); 
     };
 
-    useEffect(() => {
-      console.log(tasks)
-    }, [tasks])
+    const toggleTask = (taskId: number) => {
+      setTasks((prevTasks) => 
+        prevTasks.map((task) => 
+          task.id === taskId ? { ...task, done: !task.done } : task
+        )
+      );
+    };
+
+    const clearCompletedTasks = () => {
+      setTasks((prevTasks) => prevTasks.filter(task => !task.done));
+  };
+
 
   return (
     <div className={style.Body}>
       <Tittle text={"Todos"}/>
       <TaskInput pushTask={pushTask}></TaskInput>
-      <BtnMenu tasks={tasks}></BtnMenu>
+      <TaskTable tasks={tasks} toggleTask={toggleTask} clearCompletedTasks={clearCompletedTasks}></TaskTable>
     </div>
   );
 }

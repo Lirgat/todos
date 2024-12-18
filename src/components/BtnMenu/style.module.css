@@ -1,0 +1,34 @@
+.MenuBox{
+    color: gray;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    font-family: "Roboto";
+    width: 100%;
+}
+
+.MenuInfo{
+    font-size: 18px;
+}
+
+.MenuBtn {
+    cursor: pointer;
+    background-color: none;
+    color: gray;
+    border: none;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.SortList {
+    display: flex;
+    font-size: 18px;
+    flex-direction: row;
+    gap: 10px;
+    list-style-type: none;
+}
+
+.MenuBtn:hover {
+    color: black;
+}

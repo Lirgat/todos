@@ -1,8 +1,8 @@
 import React, { FunctionComponent, useCallback, JSX, useState} from "react";
 import style from "./style.module.css";
-import { TaskProps } from "../../types";
+import { InputProps } from "../../types";
 
-const TaskInput:FunctionComponent<{ pushTask: (task: TaskProps) => void }> = ({ pushTask }): JSX.Element => {
+const TaskInput:FunctionComponent<{ pushTask: (task: InputProps) => void }> = ({ pushTask }): JSX.Element => {
     const [inputValue, setValue] = useState<string>('');
     const [idCount, setId] = useState<number>(0);
 
@@ -12,7 +12,7 @@ const TaskInput:FunctionComponent<{ pushTask: (task: TaskProps) => void }> = ({ 
 
     const handleClick = useCallback((): void => {
         if (inputValue.trim() !== '') {
-            const currentTask: TaskProps = {
+            const currentTask: InputProps = {
                 name: inputValue,
                 done: false,
                 id: idCount
@@ -32,7 +32,7 @@ const TaskInput:FunctionComponent<{ pushTask: (task: TaskProps) => void }> = ({ 
     return(
         <div className={style.InputBlock}>
             <input value={inputValue} onChange={handleChange} className={style.Input} onKeyDown={handleKeyDown}/>
-            <button onClick={handleClick} className={style.Button}>Создать таску</button>
+            <button onClick={handleClick} className={style.Button}>CREATE TASK</button>
         </div>
     )
 }

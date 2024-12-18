@@ -1,32 +1,33 @@
-import React, { FunctionComponent, JSX, useMemo, useState } from "react";
+import React, { FunctionComponent, JSX, useCallback, useEffect, useState } from "react";
 import style from "./style.module.css"
 import { BtnMenuProps } from "../../types";
 
 
-const BtnMenu:FunctionComponent<BtnMenuProps> = ({tasks}):JSX.Element => {
+const BtnMenu:FunctionComponent<BtnMenuProps> = ({tasks, changeFilter, clearCompletedTasks}):JSX.Element => {
     const [activeTasksCount, setActiveTasksCount] = useState<number>(0);
-    let count:number = 0
 
-    useMemo(():void => {
-        count = 0
-        setActiveTasksCount(0)
-        tasks.forEach(el => {
-            if(el?.done === false){
-                count += 1
-            }
-        });
-        setActiveTasksCount((activeTasksCount) => activeTasksCount += count)
-    }, [tasks])
+    const filtering = (filtration: string) => {
+        changeFilter(filtration);
+    };
+
+    const handleFilter = useCallback((e: React.MouseEvent<HTMLLIElement>) => {
+        filtering(e.currentTarget.textContent || "All");
+    }, []);
+
+    useEffect(() => {
+        const count = tasks.filter(task => !task.done).length;
+        setActiveTasksCount(count);
+    }, [tasks]);
 
     return (
         <div className={style.MenuBox}>
-            <div className={style.MenuBtn}>{activeTasksCount} items left</div>
-            <ul className={style.sortList}>
-                <li className={style.MenuBtn}>All</li>
-                <li className={style.MenuBtn}>Active</li>
-                <li className={style.MenuBtn}>Completed</li>
+            <div className={style.MenuInfo}>{activeTasksCount} items left</div>
+            <ul className={style.SortList}>
+                <li onClick={handleFilter} className={style.MenuBtn}>All</li>
+                <li onClick={handleFilter} className={style.MenuBtn}>Active</li>
+                <li onClick={handleFilter} className={style.MenuBtn}>Completed</li>
             </ul>
-            <button className={style.MenuBtn}>Clear completed</button>
+            <button onClick={clearCompletedTasks} className={style.MenuBtn}>Clear completed</button>
         </div>
     )
 }

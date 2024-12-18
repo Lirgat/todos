@@ -1,0 +1,27 @@
+.TaskWrapper {
+    position: relative;
+    z-index: 999999;
+    max-width: 700px;
+    padding: 50px;
+    width: 100%;
+    background-color: #ffffff;
+    border: 2px solid rgb(173, 173, 173);
+    border-radius: 10px;
+}
+
+.TaskBox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 30px;
+    width: 100%;
+    justify-content: start;
+}
+
+.NoTasks {
+    color: rgb(17, 162, 56);
+    font-size: 18px;
+    font-weight: bold;
+    font-family: "Roboto", sans-serif;
+    text-align: center;
+}
