@@ -13,5 +13,5 @@ export type TaskList = [
 ]
 
 export interface BtnMenuProps {
-    tasks: TaskProps[]; // Определите интерфейс для props
+    tasks: TaskList;
 }

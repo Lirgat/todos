@@ -23,10 +23,15 @@ const TaskInput:FunctionComponent<{ pushTask: (task: TaskProps) => void }> = ({ 
         }
     }, [inputValue, pushTask]);
 
-    
+    const handleKeyDown = (e:React.KeyboardEvent<HTMLInputElement>):void => {
+        if(e.key === "Enter"){
+            handleClick()
+        }
+    }
+
     return(
         <div className={style.InputBlock}>
-            <input value={inputValue} onChange={handleChange} className={style.Input}/>
+            <input value={inputValue} onChange={handleChange} className={style.Input} onKeyDown={handleKeyDown}/>
             <button onClick={handleClick} className={style.Button}>Создать таску</button>
         </div>
     )
